@@ -10,10 +10,24 @@ const App: React.FC = () => {
     return `Welcome to ${name}!`;
   };
 
+  // This is a TypeScript array with type annotation!
+  const chickenBreeds: string[] = [
+    "Rhode Island Red",
+    "Leghorn",
+    "Sussex",
+    "Orpington",
+  ];
+
   return (
     <div>
       <h1>🐔 {appName}</h1>
       <p>{createGreeting(appName)}</p>
+      <h2>Popular Chicken Breeds:</h2>
+      <ul>
+        {chickenBreeds.map((breed, index) => (
+          <li key={index}>{breed}</li>
+        ))}
+      </ul>
     </div>
   );
 };
