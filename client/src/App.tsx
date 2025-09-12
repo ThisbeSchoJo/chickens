@@ -26,32 +26,55 @@ const App: React.FC = () => {
     "Orpington",
   ];
 
-  // This is a TypeScript object using our interface!
-  const myChicken: Chicken = {
-    name: "Henrietta",
-    breed: "Rhode Island Red",
-    age: 2,
-    eggsPerWeek: 5,
-  };
+  // This is a TypeScript array of Chicken objects using our interface!
+  const myFlock: Chicken[] = [
+    {
+      name: "Henrietta",
+      breed: "Rhode Island Red",
+      age: 2,
+      eggsPerWeek: 5,
+    },
+    {
+      name: "Clucky",
+      breed: "Leghorn",
+      age: 1,
+      eggsPerWeek: 6,
+    },
+    {
+      name: "Penny",
+      breed: "Sussex",
+      age: 3,
+      eggsPerWeek: 4,
+    },
+  ];
 
   return (
     <div>
       <h1>🐔 {appName}</h1>
       <p>{createGreeting(appName)}</p>
-      <h2>My Chicken:</h2>
+      <h2>My Flock:</h2>
       <div>
-        <p>
-          <strong>Name:</strong> {myChicken.name}
-        </p>
-        <p>
-          <strong>Breed:</strong> {myChicken.breed}
-        </p>
-        <p>
-          <strong>Age:</strong> {myChicken.age} years old
-        </p>
-        <p>
-          <strong>Eggs per week:</strong> {myChicken.eggsPerWeek}
-        </p>
+        {myFlock.map((chicken, index) => (
+          <div
+            key={index}
+            style={{
+              border: "1px solid #ccc",
+              margin: "10px",
+              padding: "10px",
+            }}
+          >
+            <h3>🐔 {chicken.name}</h3>
+            <p>
+              <strong>Breed:</strong> {chicken.breed}
+            </p>
+            <p>
+              <strong>Age:</strong> {chicken.age} years old
+            </p>
+            <p>
+              <strong>Eggs per week:</strong> {chicken.eggsPerWeek}
+            </p>
+          </div>
+        ))}
       </div>
 
       <h2>Popular Chicken Breeds:</h2>
