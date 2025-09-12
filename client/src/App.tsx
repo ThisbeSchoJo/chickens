@@ -18,6 +18,12 @@ const App: React.FC = () => {
     return `Welcome to ${name}!`;
   };
 
+  // This function takes an array of chickens and returns the total eggs per week!
+  const calculateTotalEggs = (chickens: Chicken[]): number => {
+    return chickens.reduce((total, chicken) => total + chicken.eggsPerWeek, 0); 
+    // chickens.reduce() goes through each chicken in the array and adds the eggsPerWeek to the total (total is the running sum, chicken is the current chicken), 0 is the initial value of the total
+  };
+
   // This is a TypeScript array with type annotation!
   const chickenBreeds: string[] = [
     "Rhode Island Red",
@@ -53,6 +59,9 @@ const App: React.FC = () => {
       <h1>🐔 {appName}</h1>
       <p>{createGreeting(appName)}</p>
       <h2>My Flock:</h2>
+      <p>
+        <strong>Total eggs per week:</strong> {calculateTotalEggs(myFlock)} 🥚
+      </p>
       <div>
         {myFlock.map((chicken, index) => (
           <div
