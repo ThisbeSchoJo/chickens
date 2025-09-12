@@ -1,5 +1,13 @@
 import React from "react";
 
+// This is a TypeScript interface - it defines the shape of a Chicken object!
+interface Chicken {
+  name: string;
+  breed: string;
+  age: number;
+  eggsPerWeek: number;
+}
+
 // The ": React.FC" part is TypeScript - aka this is a React Functional Component
 const App: React.FC = () => {
   // This is a TypeScript variable with a type annotation!
@@ -18,13 +26,8 @@ const App: React.FC = () => {
     "Orpington",
   ];
 
-  // This is a TypeScript object with type annotation!
-  const myChicken: {
-    name: string;
-    breed: string;
-    age: number;
-    eggsPerWeek: number;
-  } = {
+  // This is a TypeScript object using our interface!
+  const myChicken: Chicken = {
     name: "Henrietta",
     breed: "Rhode Island Red",
     age: 2,
