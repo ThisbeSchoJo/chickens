@@ -18,10 +18,39 @@ const App: React.FC = () => {
     "Orpington",
   ];
 
+  // This is a TypeScript object with type annotation!
+  const myChicken: {
+    name: string;
+    breed: string;
+    age: number;
+    eggsPerWeek: number;
+  } = {
+    name: "Henrietta",
+    breed: "Rhode Island Red",
+    age: 2,
+    eggsPerWeek: 5,
+  };
+
   return (
     <div>
       <h1>🐔 {appName}</h1>
       <p>{createGreeting(appName)}</p>
+      <h2>My Chicken:</h2>
+      <div>
+        <p>
+          <strong>Name:</strong> {myChicken.name}
+        </p>
+        <p>
+          <strong>Breed:</strong> {myChicken.breed}
+        </p>
+        <p>
+          <strong>Age:</strong> {myChicken.age} years old
+        </p>
+        <p>
+          <strong>Eggs per week:</strong> {myChicken.eggsPerWeek}
+        </p>
+      </div>
+
       <h2>Popular Chicken Breeds:</h2>
       <ul>
         {chickenBreeds.map((breed, index) => (
