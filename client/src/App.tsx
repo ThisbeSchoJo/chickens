@@ -1,4 +1,5 @@
 import React from "react";
+import "./App.css";
 
 // This is a TypeScript interface - it defines the shape of a Chicken object!
 interface Chicken {
@@ -20,7 +21,7 @@ const App: React.FC = () => {
 
   // This function takes an array of chickens and returns the total eggs per week!
   const calculateTotalEggs = (chickens: Chicken[]): number => {
-    return chickens.reduce((total, chicken) => total + chicken.eggsPerWeek, 0); 
+    return chickens.reduce((total, chicken) => total + chicken.eggsPerWeek, 0);
     // chickens.reduce() goes through each chicken in the array and adds the eggsPerWeek to the total (total is the running sum, chicken is the current chicken), 0 is the initial value of the total
   };
 
@@ -55,7 +56,7 @@ const App: React.FC = () => {
   ];
 
   return (
-    <div>
+    <div className="app-container">
       <h1>🐔 {appName}</h1>
       <p>{createGreeting(appName)}</p>
       <h2>My Flock:</h2>
@@ -64,14 +65,7 @@ const App: React.FC = () => {
       </p>
       <div>
         {myFlock.map((chicken, index) => (
-          <div
-            key={index}
-            style={{
-              border: "1px solid #ccc",
-              margin: "10px",
-              padding: "10px",
-            }}
-          >
+          <div key={index} className="chicken-card">
             <h3>🐔 {chicken.name}</h3>
             <p>
               <strong>Breed:</strong> {chicken.breed}
