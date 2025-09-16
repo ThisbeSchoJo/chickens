@@ -58,8 +58,11 @@ const App: React.FC = () => {
   return (
     <div className="app-container">
       <h1>🐔 {appName}</h1>
-      <p>{createGreeting(appName)}</p>
-      <h2>My Flock:</h2>
+      <p className="welcome-message">{createGreeting(appName)}</p>
+      <div className="flock-header">
+        <h2>My Flock:</h2>
+        <span className="flock-count">🐔 {myFlock.length} chickens</span>
+      </div>
       <div className="total-eggs">
         <strong>Total eggs per week:</strong> {calculateTotalEggs(myFlock)} 🥚
       </div>
@@ -75,7 +78,6 @@ const App: React.FC = () => {
             </div>
             <div className="chicken-info eggs-info">
               <strong>Eggs per week:</strong> {chicken.eggsPerWeek}
-              <span className="egg-badge">🥚 {chicken.eggsPerWeek}</span>
             </div>
           </div>
         ))}

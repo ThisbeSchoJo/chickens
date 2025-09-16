@@ -164,7 +164,67 @@ h3 {
 
 .breeds-list li {
   background-color: white;
-  padding: 10px 15px;
-  border-radius: 5px;
+  padding: 12px 16px;
+  border-radius: 8px;
   border-left: 4px solid #f39c12;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.breeds-list li:hover {
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left-color: #e67e22;
+}
+
+/* Welcome message styling */
+.welcome-message {
+  text-align: center;
+  color: #7f8c8d;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  font-style: italic;
+}
+
+/* Flock header styling */
+.flock-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.flock-count {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Subtle animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chicken-card {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.chicken-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.chicken-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.chicken-card:nth-child(3) {
+  animation-delay: 0.3s;
 }
