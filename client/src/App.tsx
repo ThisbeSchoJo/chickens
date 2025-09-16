@@ -60,9 +60,9 @@ const App: React.FC = () => {
       <h1>🐔 {appName}</h1>
       <p>{createGreeting(appName)}</p>
       <h2>My Flock:</h2>
-      <p>
+      <div className="total-eggs">
         <strong>Total eggs per week:</strong> {calculateTotalEggs(myFlock)} 🥚
-      </p>
+      </div>
       <div>
         {myFlock.map((chicken, index) => (
           <div key={index} className="chicken-card">
@@ -81,11 +81,13 @@ const App: React.FC = () => {
       </div>
 
       <h2>Popular Chicken Breeds:</h2>
-      <ul>
-        {chickenBreeds.map((breed, index) => (
-          <li key={index}>{breed}</li>
-        ))}
-      </ul>
+      <div className="breeds-list">
+        <ul>
+          {chickenBreeds.map((breed, index) => (
+            <li key={index}>{breed}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
