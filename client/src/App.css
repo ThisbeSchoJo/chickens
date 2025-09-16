@@ -293,3 +293,56 @@ h1 {
 .flock-count {
   animation: pulse 3s ease-in-out infinite;
 }
+
+/* Form styling */
+.add-chicken-form {
+  background-color: #f8f9fa;
+  padding: 30px;
+  border-radius: 16px;
+  margin-top: 30px;
+  border: 1px solid #e9ecef;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #495057;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+}
+
+.add-chicken-btn {
+  background: linear-gradient(135deg, #ff6b6b, #feca57);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.add-chicken-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 // This is a TypeScript interface - it defines the shape of a Chicken object!
@@ -34,7 +34,8 @@ const App: React.FC = () => {
   ];
 
   // This is a TypeScript array of Chicken objects using our interface!
-  const myFlock: Chicken[] = [
+  // Now it is a React state variable so it can change
+  const [myFlock, setMyFlock] = useState<Chicken[]>([
     {
       name: "Henrietta",
       breed: "Rhode Island Red",
@@ -53,7 +54,7 @@ const App: React.FC = () => {
       age: 3,
       eggsPerWeek: 4,
     },
-  ];
+  ]);
 
   return (
     <div className="app-container">
@@ -91,6 +92,48 @@ const App: React.FC = () => {
           ))}
         </ul>
       </div>
+
+      {/* New form to add chickens! */}
+      <h2>Add a New Chicken:</h2>
+      <form className="add-chicken-form">
+        <div className="form-group">
+          <label htmlFor="chicken-name">Name:</label>
+          <input
+            type="text"
+            id="chicken-name"
+            placeholder="Enter chicken name"
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="chicken-breed">Breed:</label>
+          <input type="text" id="chicken-breed" placeholder="Enter breed" />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="chicken-age">Age (years):</label>
+          <input
+            type="number"
+            id="chicken-age"
+            placeholder="Enter age"
+            min="0"
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="chicken-eggs">Eggs per week:</label>
+          <input
+            type="number"
+            id="chicken-eggs"
+            placeholder="Enter eggs per week"
+            min="0"
+          />
+        </div>
+
+        <button type="submit" className="add-chicken-btn">
+          Add Chicken 🐔
+        </button>
+      </form>
     </div>
   );
 };
