@@ -12,21 +12,23 @@ body {
   max-width: 800px;
   margin: 0 auto;
   background-color: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 /* Style for chicken cards */
 .chicken-card {
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  padding: 25px;
-  margin: 20px 0;
-  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  padding: 28px;
+  margin: 24px 0;
+  background: linear-gradient(145deg, #ffffff, #fafbfc);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .chicken-card::before {
@@ -35,14 +37,15 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #f39c12, #e67e22, #d35400);
+  height: 5px;
+  background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+  border-radius: 20px 20px 0 0;
 }
 
 .chicken-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  border-color: #f39c12;
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  border-color: #ff6b6b;
 }
 
 .chicken-card h3 {
@@ -79,14 +82,17 @@ body {
 
 .breed-info::before {
   content: "🐓";
+  font-size: 1rem;
 }
 
 .age-info::before {
   content: "📅";
+  font-size: 1rem;
 }
 
 .eggs-info::before {
   content: "🥚";
+  font-size: 1rem;
 }
 
 /* Cute egg counter badge */
@@ -113,7 +119,7 @@ h1 {
 
 h2 {
   color: #34495e;
-  border-bottom: 3px solid #f39c12;
+  border-bottom: 3px solid #ff6b6b;
   padding-bottom: 10px;
   margin-top: 30px;
 }
@@ -126,15 +132,16 @@ h3 {
 
 /* Style the total eggs section */
 .total-eggs {
-  background: linear-gradient(135deg, #f39c12, #e67e22);
+  background: linear-gradient(135deg, #ff6b6b, #feca57);
   color: white;
-  padding: 20px;
-  border-radius: 12px;
+  padding: 25px;
+  border-radius: 20px;
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   margin: 20px 0;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
 }
 
 /* Style the chicken breeds list */
@@ -156,16 +163,17 @@ h3 {
 .breeds-list li {
   background-color: white;
   padding: 12px 16px;
-  border-radius: 8px;
-  border-left: 4px solid #f39c12;
+  border-radius: 12px;
+  border-left: 4px solid #ff6b6b;
   transition: all 0.2s ease;
   cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .breeds-list li:hover {
-  transform: translateX(5px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-left-color: #e67e22;
+  transform: translateX(5px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-left-color: #feca57;
 }
 
 /* Welcome message styling */
@@ -186,12 +194,13 @@ h3 {
 }
 
 .flock-count {
-  background: linear-gradient(135deg, #3498db, #2980b9);
+  background: linear-gradient(135deg, #48dbfb, #0abde3);
   color: white;
-  padding: 8px 16px;
-  border-radius: 20px;
+  padding: 10px 18px;
+  border-radius: 25px;
   font-size: 0.9rem;
   font-weight: 600;
+  box-shadow: 0 2px 8px rgba(72, 219, 251, 0.3);
 }
 
 /* Subtle animations */
