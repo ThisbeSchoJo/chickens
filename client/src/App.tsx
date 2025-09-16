@@ -25,6 +25,40 @@ const App: React.FC = () => {
     // chickens.reduce() goes through each chicken in the array and adds the eggsPerWeek to the total (total is the running sum, chicken is the current chicken), 0 is the initial value of the total
   };
 
+  // This function handles when someone submits the form to add a new chicken
+  const handleAddChicken = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault(); // This prevents the page from refreshing when the form is submitted
+
+    // Get the form element
+    const form = event.currentTarget;
+
+    // Get the values from each input field
+    const name = (form.elements.namedItem("chicken-name") as HTMLInputElement)
+      .value;
+    const breed = (form.elements.namedItem("chicken-breed") as HTMLInputElement)
+      .value;
+    const age = parseInt(
+      (form.elements.namedItem("chicken-age") as HTMLInputElement).value
+    );
+    const eggsPerWeek = parseInt(
+      (form.elements.namedItem("chicken-eggs") as HTMLInputElement).value
+    );
+
+    // Create a new chicken object using our Chicken interface
+    const newChicken: Chicken = {
+      name: name,
+      breed: breed,
+      age: age,
+      eggsPerWeek: eggsPerWeek,
+    };
+
+    // Add the new chicken to our existing flock using setMyFlock
+    setMyFlock([...myFlock, newChicken]);
+
+    // Clear the form after adding the chicken
+    form.reset();
+  };
+
   // This is a TypeScript array with type annotation!
   const chickenBreeds: string[] = [
     "Rhode Island Red",
