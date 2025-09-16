@@ -63,6 +63,46 @@ body {
   font-weight: 600;
 }
 
+/* Cute minimalist icons */
+.chicken-info {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  gap: 8px;
+}
+
+.chicken-info::before {
+  font-size: 1.2rem;
+  width: 20px;
+  text-align: center;
+}
+
+.breed-info::before {
+  content: "🐓";
+}
+
+.age-info::before {
+  content: "📅";
+}
+
+.eggs-info::before {
+  content: "🥚";
+}
+
+/* Cute egg counter badge */
+.egg-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
 /* Beautiful heading styles */
 h1 {
   color: #2c3e50;
@@ -88,11 +128,22 @@ h3 {
 .total-eggs {
   background: linear-gradient(135deg, #f39c12, #e67e22);
   color: white;
-  padding: 15px;
-  border-radius: 8px;
+  padding: 20px;
+  border-radius: 12px;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin: 20px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.total-eggs::before {
+  content: "🥚";
+  font-size: 2rem;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  opacity: 0.3;
 }
 
 /* Style the chicken breeds list */

@@ -67,15 +67,16 @@ const App: React.FC = () => {
         {myFlock.map((chicken, index) => (
           <div key={index} className="chicken-card">
             <h3>🐔 {chicken.name}</h3>
-            <p>
+            <div className="chicken-info breed-info">
               <strong>Breed:</strong> {chicken.breed}
-            </p>
-            <p>
+            </div>
+            <div className="chicken-info age-info">
               <strong>Age:</strong> {chicken.age} years old
-            </p>
-            <p>
+            </div>
+            <div className="chicken-info eggs-info">
               <strong>Eggs per week:</strong> {chicken.eggsPerWeek}
-            </p>
+              <span className="egg-badge">🥚 {chicken.eggsPerWeek}</span>
+            </div>
           </div>
         ))}
       </div>
