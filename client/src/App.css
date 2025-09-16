@@ -137,15 +137,6 @@ h3 {
   overflow: hidden;
 }
 
-.total-eggs::before {
-  content: "🥚";
-  font-size: 2rem;
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  opacity: 0.3;
-}
-
 /* Style the chicken breeds list */
 .breeds-list {
   background-color: #ecf0f1;
@@ -227,4 +218,69 @@ h3 {
 }
 .chicken-card:nth-child(3) {
   animation-delay: 0.3s;
+}
+
+/* Gentle floating animation for the main title */
+@keyframes gentleFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+h1 {
+  animation: gentleFloat 4s ease-in-out infinite;
+}
+
+/* Subtle breathing effect for the total eggs section */
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.total-eggs {
+  animation: breathe 6s ease-in-out infinite;
+}
+
+/* Gentle color shift for the gradient top borders */
+@keyframes colorShift {
+  0% {
+    background: linear-gradient(90deg, #f39c12, #e67e22, #d35400);
+  }
+  33% {
+    background: linear-gradient(90deg, #e67e22, #d35400, #f39c12);
+  }
+  66% {
+    background: linear-gradient(90deg, #d35400, #f39c12, #e67e22);
+  }
+  100% {
+    background: linear-gradient(90deg, #f39c12, #e67e22, #d35400);
+  }
+}
+
+.chicken-card::before {
+  animation: colorShift 8s ease-in-out infinite;
+}
+
+/* Subtle pulsing for the flock count badge */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.flock-count {
+  animation: pulse 3s ease-in-out infinite;
 }
