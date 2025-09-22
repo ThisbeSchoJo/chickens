@@ -14,6 +14,27 @@
   text-align: center;
 }
 
+/* Simple White Chicken */
+.chicken-silhouette {
+  width: 100px;
+  height: 100px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  margin: 0 auto 30px auto;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Gentle floating animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 /* Title */
 .landing-text h1 {
   font-size: 2rem;
