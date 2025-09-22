@@ -33,16 +33,36 @@ const App: React.FC = () => {
     const form = event.currentTarget;
 
     // Get the values from each input field
-    const name = (form.elements.namedItem("chicken-name") as HTMLInputElement)
-      .value;
-    const breed = (form.elements.namedItem("chicken-breed") as HTMLInputElement)
-      .value;
+    const name = (
+      form.elements.namedItem("chicken-name") as HTMLInputElement
+    ).value.trim();
+    const breed = (
+      form.elements.namedItem("chicken-breed") as HTMLInputElement
+    ).value.trim();
     const age = parseInt(
       (form.elements.namedItem("chicken-age") as HTMLInputElement).value
     );
     const eggsPerWeek = parseInt(
       (form.elements.namedItem("chicken-eggs") as HTMLInputElement).value
     );
+
+    // Validate that all fields are filled and have valid values
+    if (!name || !breed || isNaN(age) || isNaN(eggsPerWeek)) {
+      alert("Please fill in all fields with valid data!");
+      return;
+    }
+
+    // Validate age range (0-20 years is reasonable for chickens)
+    if (age < 0 || age > 20) {
+      alert("Please enter a valid age (0-20 years)!");
+      return;
+    }
+
+    // Validate eggs per week range (0-10 is reasonable)
+    if (eggsPerWeek < 0 || eggsPerWeek > 10) {
+      alert("Please enter a valid number of eggs per week (0-10)!");
+      return;
+    }
 
     // Create a new chicken object using our Chicken interface
     const newChicken: Chicken = {
@@ -129,19 +149,25 @@ const App: React.FC = () => {
 
       {/* New form to add chickens! */}
       <h2>Add a New Chicken:</h2>
-      <form className="add-chicken-form">
+      <form className="add-chicken-form" onSubmit={handleAddChicken}>
         <div className="form-group">
           <label htmlFor="chicken-name">Name:</label>
           <input
             type="text"
             id="chicken-name"
             placeholder="Enter chicken name"
+            required
           />
         </div>
 
         <div className="form-group">
           <label htmlFor="chicken-breed">Breed:</label>
-          <input type="text" id="chicken-breed" placeholder="Enter breed" />
+          <input
+            type="text"
+            id="chicken-breed"
+            placeholder="Enter breed"
+            required
+          />
         </div>
 
         <div className="form-group">
@@ -151,6 +177,8 @@ const App: React.FC = () => {
             id="chicken-age"
             placeholder="Enter age"
             min="0"
+            max="20"
+            required
           />
         </div>
 
@@ -161,6 +189,8 @@ const App: React.FC = () => {
             id="chicken-eggs"
             placeholder="Enter eggs per week"
             min="0"
+            max="10"
+            required
           />
         </div>
 

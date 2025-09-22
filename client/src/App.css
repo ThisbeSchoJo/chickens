@@ -95,20 +95,6 @@ body {
   font-size: 1rem;
 }
 
-/* Cute egg counter badge */
-.egg-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: linear-gradient(135deg, #f39c12, #e67e22);
-  color: white;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-left: 10px;
-}
-
 /* Beautiful heading styles */
 h1 {
   color: #2c3e50;
