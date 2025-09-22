@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import LandingPage from "./LandingPage";
 
 // This is a TypeScript interface - it defines the shape of a Chicken object!
 interface Chicken {
@@ -11,6 +12,9 @@ interface Chicken {
 
 // The ": React.FC" part is TypeScript - aka this is a React Functional Component
 const App: React.FC = () => {
+  // State to control whether to show landing page or main app
+  const [showLanding, setShowLanding] = useState<boolean>(true);
+
   // This is a TypeScript variable with a type annotation!
   const appName: string = "Chickens App";
 
@@ -23,6 +27,11 @@ const App: React.FC = () => {
   const calculateTotalEggs = (chickens: Chicken[]): number => {
     return chickens.reduce((total, chicken) => total + chicken.eggsPerWeek, 0);
     // chickens.reduce() goes through each chicken in the array and adds the eggsPerWeek to the total (total is the running sum, chicken is the current chicken), 0 is the initial value of the total
+  };
+
+  // Function to handle entering the main app from landing page
+  const handleEnterApp = (): void => {
+    setShowLanding(false);
   };
 
   // This function handles when someone submits the form to add a new chicken
@@ -109,6 +118,11 @@ const App: React.FC = () => {
       eggsPerWeek: 4,
     },
   ]);
+
+  // Show landing page first, then main app
+  if (showLanding) {
+    return <LandingPage onEnterApp={handleEnterApp} />;
+  }
 
   return (
     <div className="app-container">
