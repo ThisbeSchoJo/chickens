@@ -9,15 +9,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
   return (
     <div className="landing-page">
       <div className="landing-content">
-        <div className="chicken-silhouette">🐓</div>
-
-        <div className="landing-text">
-          <h1>Chickens</h1>
-          <p>Manage your flock with ease</p>
-        </div>
-
-        <button className="enter-btn" onClick={onEnterApp}>
-          Enter App
+        <button className="chicken-silhouette" onClick={onEnterApp}>
+          <div className="chicken-emoji">🐓</div>
         </button>
       </div>
     </div>

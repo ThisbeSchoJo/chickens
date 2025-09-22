@@ -18,13 +18,36 @@
   gap: 20px;
 }
 
-/* Chicken Emoji as White Silhouette */
+/* Chicken Button Container */
 .chicken-silhouette {
-  font-size: 120px;
   margin: 0 auto;
   animation: float 3s ease-in-out infinite;
+  line-height: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 20px;
+  position: relative;
+}
+
+/* Chicken Emoji with White Filter */
+.chicken-emoji {
+  font-size: 150px;
   filter: brightness(0) invert(1);
   line-height: 1;
+}
+
+.chicken-silhouette:hover {
+  transform: scale(1.1);
+}
+
+.chicken-silhouette:hover .chicken-emoji {
+  filter: brightness(0) invert(1) drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+}
+
+.chicken-silhouette:active {
+  transform: scale(0.95);
 }
 
 /* Gentle floating animation */
@@ -36,38 +59,4 @@
   50% {
     transform: translateY(-10px);
   }
-}
-
-/* Title */
-.landing-text h1 {
-  font-size: 2.5rem;
-  margin: 0;
-  font-weight: 300;
-  letter-spacing: 2px;
-}
-
-.landing-text p {
-  font-size: 1.1rem;
-  margin: 0;
-  opacity: 0.7;
-  font-weight: 300;
-}
-
-/* Button */
-.enter-btn {
-  background: transparent;
-  color: #ffffff;
-  border: 2px solid #ffffff;
-  padding: 12px 24px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 300;
-  letter-spacing: 1px;
-}
-
-.enter-btn:hover {
-  background-color: #ffffff;
-  color: #000000;
-  transform: translateY(-2px);
 }
