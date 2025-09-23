@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import LandingPage from "./LandingPage";
-
-// This is a TypeScript interface - it defines the shape of a Chicken object!
-interface Chicken {
-  name: string;
-  breed: string;
-  age: number;
-  eggsPerWeek: number;
-}
+import { Chicken } from "./types";
 
 // The ": React.FC" part is TypeScript - aka this is a React Functional Component
 const App: React.FC = () => {
