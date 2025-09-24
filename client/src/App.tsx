@@ -9,6 +9,21 @@ const App: React.FC = () => {
   // State to control whether to show landing page or main app
   const [showLanding, setShowLanding] = useState<boolean>(true);
 
+  // Form state for controlled inputs
+  const [formData, setFormData] = useState({
+    name: "",
+    breed: "",
+    age: "",
+    eggsPerWeek: "",
+  });
+
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    breed: "",
+    age: "",
+    eggsPerWeek: "",
+  });
+
   // This is a TypeScript variable with a type annotation!
   const appName: string = "Chickens App";
 
@@ -28,59 +43,78 @@ const App: React.FC = () => {
     setShowLanding(false);
   };
 
+  // Handle input changes for controlled inputs
+  const handleInputChange = (field: string, value: string): void => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+
+    // Clear error when user starts typing
+    if (formErrors[field as keyof typeof formErrors]) {
+      setFormErrors((prev) => ({ ...prev, [field]: "" }));
+    }
+  };
+
+  // Validate form data
+  const validateForm = (): boolean => {
+    const errors = {
+      name: "",
+      breed: "",
+      age: "",
+      eggsPerWeek: "",
+    };
+
+    if (!formData.name.trim()) {
+      errors.name = "Name is required";
+    }
+
+    if (!formData.breed.trim()) {
+      errors.breed = "Breed is required";
+    }
+
+    const age = parseInt(formData.age);
+    if (!formData.age || isNaN(age)) {
+      errors.age = "Please enter a valid age";
+    } else if (age < 0 || age > 20) {
+      errors.age = "Age must be between 0 and 20 years";
+    }
+
+    const eggsPerWeek = parseInt(formData.eggsPerWeek);
+    if (!formData.eggsPerWeek || isNaN(eggsPerWeek)) {
+      errors.eggsPerWeek = "Please enter a valid number";
+    } else if (eggsPerWeek < 0 || eggsPerWeek > 10) {
+      errors.eggsPerWeek = "Eggs per week must be between 0 and 10";
+    }
+
+    setFormErrors(errors);
+    return !Object.values(errors).some((error) => error !== "");
+  };
+
   // This function handles when someone submits the form to add a new chicken
   const handleAddChicken = (event: React.FormEvent<HTMLFormElement>): void => {
-    event.preventDefault(); // This prevents the page from refreshing when the form is submitted
+    event.preventDefault();
 
-    // Get the form element
-    const form = event.currentTarget;
-
-    // Get the values from each input field
-    const name = (
-      form.elements.namedItem("chicken-name") as HTMLInputElement
-    ).value.trim();
-    const breed = (
-      form.elements.namedItem("chicken-breed") as HTMLInputElement
-    ).value.trim();
-    const age = parseInt(
-      (form.elements.namedItem("chicken-age") as HTMLInputElement).value
-    );
-    const eggsPerWeek = parseInt(
-      (form.elements.namedItem("chicken-eggs") as HTMLInputElement).value
-    );
-
-    // Validate that all fields are filled and have valid values
-    if (!name || !breed || isNaN(age) || isNaN(eggsPerWeek)) {
-      alert("Please fill in all fields with valid data!");
-      return;
-    }
-
-    // Validate age range (0-20 years is reasonable for chickens)
-    if (age < 0 || age > 20) {
-      alert("Please enter a valid age (0-20 years)!");
-      return;
-    }
-
-    // Validate eggs per week range (0-10 is reasonable)
-    if (eggsPerWeek < 0 || eggsPerWeek > 10) {
-      alert("Please enter a valid number of eggs per week (0-10)!");
+    if (!validateForm()) {
       return;
     }
 
     // Create a new chicken object using our Chicken interface
     const newChicken: Chicken = {
-      id: Date.now(), // Generate unique ID using current timestamp
-      name: name,
-      breed: breed,
-      age: age,
-      eggsPerWeek: eggsPerWeek,
+      id: Date.now(),
+      name: formData.name.trim(),
+      breed: formData.breed.trim(),
+      age: parseInt(formData.age),
+      eggsPerWeek: parseInt(formData.eggsPerWeek),
     };
 
-    // Add the new chicken to our existing flock using setMyFlock
+    // Add the new chicken to our existing flock
     setMyFlock([...myFlock, newChicken]);
 
     // Clear the form after adding the chicken
-    form.reset();
+    setFormData({
+      name: "",
+      breed: "",
+      age: "",
+      eggsPerWeek: "",
+    });
   };
 
   // This is a TypeScript array with type annotation!
@@ -156,9 +190,15 @@ const App: React.FC = () => {
           <input
             type="text"
             id="chicken-name"
+            name="chicken-name"
             placeholder="Enter chicken name"
-            required
+            value={formData.name}
+            onChange={(e) => handleInputChange("name", e.target.value)}
+            className={formErrors.name ? "error" : ""}
           />
+          {formErrors.name && (
+            <span className="error-message">{formErrors.name}</span>
+          )}
         </div>
 
         <div className="form-group">
@@ -166,9 +206,15 @@ const App: React.FC = () => {
           <input
             type="text"
             id="chicken-breed"
+            name="chicken-breed"
             placeholder="Enter breed"
-            required
+            value={formData.breed}
+            onChange={(e) => handleInputChange("breed", e.target.value)}
+            className={formErrors.breed ? "error" : ""}
           />
+          {formErrors.breed && (
+            <span className="error-message">{formErrors.breed}</span>
+          )}
         </div>
 
         <div className="form-group">
@@ -176,11 +222,17 @@ const App: React.FC = () => {
           <input
             type="number"
             id="chicken-age"
+            name="chicken-age"
             placeholder="Enter age"
             min="0"
             max="20"
-            required
+            value={formData.age}
+            onChange={(e) => handleInputChange("age", e.target.value)}
+            className={formErrors.age ? "error" : ""}
           />
+          {formErrors.age && (
+            <span className="error-message">{formErrors.age}</span>
+          )}
         </div>
 
         <div className="form-group">
@@ -188,11 +240,17 @@ const App: React.FC = () => {
           <input
             type="number"
             id="chicken-eggs"
+            name="chicken-eggs"
             placeholder="Enter eggs per week"
             min="0"
             max="10"
-            required
+            value={formData.eggsPerWeek}
+            onChange={(e) => handleInputChange("eggsPerWeek", e.target.value)}
+            className={formErrors.eggsPerWeek ? "error" : ""}
           />
+          {formErrors.eggsPerWeek && (
+            <span className="error-message">{formErrors.eggsPerWeek}</span>
+          )}
         </div>
 
         <button type="submit" className="add-chicken-btn">

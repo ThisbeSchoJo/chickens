@@ -332,3 +332,16 @@ h1 {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
 }
+
+/* Form error styling */
+.form-group input.error {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.875rem;
+  margin-top: 4px;
+  display: block;
+}
