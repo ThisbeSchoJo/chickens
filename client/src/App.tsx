@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import LandingPage from "./LandingPage";
 import { Chicken } from "./types";
+import ChickenCard from "./components/ChickenCard";
 
 // The ": React.FC" part is TypeScript - aka this is a React Functional Component
 const App: React.FC = () => {
@@ -130,18 +131,7 @@ const App: React.FC = () => {
       </div>
       <div>
         {myFlock.map((chicken, index) => (
-          <div key={index} className="chicken-card">
-            <h3>🐔 {chicken.name}</h3>
-            <div className="chicken-info breed-info">
-              <strong>Breed:</strong> {chicken.breed}
-            </div>
-            <div className="chicken-info age-info">
-              <strong>Age:</strong> {chicken.age} years old
-            </div>
-            <div className="chicken-info eggs-info">
-              <strong>Eggs per week:</strong> {chicken.eggsPerWeek}
-            </div>
-          </div>
+          <ChickenCard key={index} chicken={chicken} />
         ))}
       </div>
 
