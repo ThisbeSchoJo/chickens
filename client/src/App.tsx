@@ -69,6 +69,7 @@ const App: React.FC = () => {
 
     // Create a new chicken object using our Chicken interface
     const newChicken: Chicken = {
+      id: Date.now(), // Generate unique ID using current timestamp
       name: name,
       breed: breed,
       age: age,
@@ -94,18 +95,21 @@ const App: React.FC = () => {
   // Now it is a React state variable so it can change
   const [myFlock, setMyFlock] = useState<Chicken[]>([
     {
+      id: 1,
       name: "Henrietta",
       breed: "Rhode Island Red",
       age: 2,
       eggsPerWeek: 5,
     },
     {
+      id: 2,
       name: "Clucky",
       breed: "Leghorn",
       age: 1,
       eggsPerWeek: 6,
     },
     {
+      id: 3,
       name: "Penny",
       breed: "Sussex",
       age: 3,
@@ -130,8 +134,8 @@ const App: React.FC = () => {
         <strong>Total eggs per week:</strong> {calculateTotalEggs(myFlock)} 🥚
       </div>
       <div>
-        {myFlock.map((chicken, index) => (
-          <ChickenCard key={index} chicken={chicken} />
+        {myFlock.map((chicken) => (
+          <ChickenCard key={chicken.id} chicken={chicken} />
         ))}
       </div>
 
