@@ -11,6 +11,7 @@ class Chicken(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     breed = db.Column(db.String, nullable=False)
+    age = db.Column(db.Integer, nullable=False)
     
     eggs_per_week = db.Column(db.Integer, nullable=False)
 
